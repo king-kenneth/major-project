@@ -21,3 +21,4 @@ Knock Off Pac-man Level/Maybe Create and Play Levels
 - 4. Ghost Spawner
 - Save and Play
 - Settings(Dark/Light Background)
+- Settings(Lefty or Righty)
