@@ -1,0 +1,15 @@
+.CCCCCCCCCCCCCCCCCC.
+.C................C.
+.C.CCC........CCC.C.
+.C.C............C.C.
+.C.C.CCCCCCCCCC.C.C.
+.C................C.
+CC................CC
+....................
+CC................CC
+.C................C.
+.C.C.CCCCCCCCCC.C.C.
+.C.C............C.C.
+.C.CCC........CCC.C.
+.C................C.
+.CCCCCCCCCCCCCCCCCC.
