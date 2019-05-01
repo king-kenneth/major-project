@@ -13,15 +13,10 @@ function preload() {
   lines = loadStrings(levelToLoad);
 
   //load background
-  levelBackground = loadImage("images/ok.jpg");
+  levelBackground = loadImage("images/WALLPAPER.jpg");
 
   //load tile images
   platform = loadImage("images/k.png");
-  // coin = loadImage("images/coin.png");
-  // box = loadImage("images/boxItem.png");
-  // fly = loadImage("images/flyFly1.png");
-  // p1 = loadImage("images/p1_front.png");
-  // slime = loadImage("images/slimeWalk1.png");
   empty = loadImage("images/k2.png");
 }
 
@@ -48,6 +43,7 @@ function setup() {
 
 function draw() {
   display();
+  ellipse(100, 100, tileWidth,tileHeight);
 }
 
 function display() {
@@ -81,3 +77,15 @@ function createEmpty2dArray(cols, rows) {
   return randomGrid;
 }
 
+
+// function mousePressed(){
+//   let xcoord = floor(mouseX / tilesWide);
+//   let ycoord = floor(mouseY / tileHeight);
+
+//   if (grid[ycoord][xcoord] === 1){
+//     grid[ycoord][xcoord] = 0;
+//   }
+// }
+function displayPlayer(){
+  ellipse(100, 75, tileWidth,tileHeight)
+}
