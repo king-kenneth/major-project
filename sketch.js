@@ -6,6 +6,7 @@ let tilesHigh, tilesWide;
 let tileWidth, tileHeight;
 let levelToLoad;
 let lines;
+let x, y ;
 
 function preload() {
   //load level data
@@ -43,7 +44,7 @@ function setup() {
 
 function draw() {
   display();
-  displayPlayer();
+  keyPressed();
 }
 
 function display() {
@@ -86,7 +87,24 @@ function createEmpty2dArray(cols, rows) {
 //     grid[ycoord][xcoord] = 0;
 //   }
 // }
-function displayPlayer(){
-  let x , y;
-  ellipse(tileWidth*10,tileHeight*10.5,tileWidth,tileHeight);
+function keyPressed() {
+  let x = 10;
+  let y = 10;
+  let xcoord = floor(x / tilesWide);
+  let ycoord = floor(y / tileHeight);
+
+  if (keyCode === LEFT_ARROW) {
+    while (xcoord > 0){
+      xcoord -= 10;
+    }
+  }
+  else if (keyCode === RIGHT_ARROW) {
+    while (xcoord+tileWidth < width){
+      xcoord += 10;
+    }
+  }
+  ellipse(xcoord,ycoord,tileWidth,tileHeight);
 }
+
+  
+
