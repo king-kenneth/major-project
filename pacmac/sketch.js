@@ -43,7 +43,7 @@ function setup() {
 
 function draw() {
   display();
-  ellipse(100, 100, tileWidth,tileHeight);
+  displayPlayer();
 }
 
 function display() {
@@ -87,5 +87,6 @@ function createEmpty2dArray(cols, rows) {
 //   }
 // }
 function displayPlayer(){
-  ellipse(100, 75, tileWidth,tileHeight)
+  let x , y;
+  ellipse(tileWidth*10,tileHeight*10.5,tileWidth,tileHeight);
 }
