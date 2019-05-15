@@ -1,12 +1,13 @@
 
 let tiles;
 let levelBackground;
-let platform , empty;
+let wall , empty;
 let tilesHigh, tilesWide;
 let tileWidth, tileHeight;
 let levelToLoad;
 let lines;
-let x, y ;
+let x = 10;
+let y = 10.5;
 
 function preload() {
   //load level data
@@ -17,7 +18,7 @@ function preload() {
   levelBackground = loadImage("images/WALLPAPER.jpg");
 
   //load tile images
-  platform = loadImage("images/k.png");
+  wall = loadImage("images/k.png");
   empty = loadImage("images/k2.png");
 }
 
@@ -44,7 +45,8 @@ function setup() {
 
 function draw() {
   display();
-  keyPressed();
+  movePac();
+  
 }
 
 function display() {
@@ -59,7 +61,7 @@ function display() {
 
 function showTile(location, x, y) {
   if (location === ".") {
-    image(platform, x * tileWidth, y * tileHeight, tileWidth, tileHeight);
+    image(wall, x * tileWidth, y * tileHeight, tileWidth, tileHeight);
   }
   else if (location === "C") {
     image(empty, x * tileWidth, y * tileHeight, tileWidth, tileHeight);
@@ -78,33 +80,33 @@ function createEmpty2dArray(cols, rows) {
   return randomGrid;
 }
 
-
-// function mousePressed(){
-//   let xcoord = floor(mouseX / tilesWide);
-//   let ycoord = floor(mouseY / tileHeight);
-
-//   if (grid[ycoord][xcoord] === 1){
-//     grid[ycoord][xcoord] = 0;
-//   }
-// }
-function keyPressed() {
-  let x = 10;
-  let y = 10;
-  let xcoord = floor(x / tilesWide);
-  let ycoord = floor(y / tileHeight);
-
-  if (keyCode === LEFT_ARROW) {
-    while (xcoord > 0){
-      xcoord -= 10;
-    }
+function movePac() {
+  // let x = 10;
+  // let y = 10.5;
+  
+  if (keyIsDown(LEFT_ARROW)) {
+    x -= 1;
   }
-  else if (keyCode === RIGHT_ARROW) {
-    while (xcoord+tileWidth < width){
-      xcoord += 10;
-    }
+
+  if (keyIsDown(RIGHT_ARROW)) {
+    x += 1;
   }
-  ellipse(xcoord,ycoord,tileWidth,tileHeight);
+
+  if (keyIsDown(UP_ARROW)) {
+    y -= 1;
+  }
+
+  if (keyIsDown(DOWN_ARROW)) {
+    y += 1;
+  }
+
+
+  ellipse(x * tileWidth , y * tileHeight, tileWidth, tileHeight);
 }
+
+ 
+
+
 
   
 
