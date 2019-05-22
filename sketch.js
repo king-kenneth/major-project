@@ -81,23 +81,21 @@ function createEmpty2dArray(cols, rows) {
 }
 
 function movePac() {
-  // let x = 10;
-  // let y = 10.5;
   
   if (keyIsDown(LEFT_ARROW)) {
-    x -= 0.1;
+    // x -= 0.1;
   }
 
   if (keyIsDown(RIGHT_ARROW)) {
-    x += 0.1;
+    // x += 0.1;
   }
 
   if (keyIsDown(UP_ARROW)) {
-    y -= 0.1;
+    // y -= 0.1;
   }
 
   if (keyIsDown(DOWN_ARROW)) {
-    y += 0.1;
+    // y += 0.1;
   }
 
  
@@ -105,7 +103,13 @@ function movePac() {
   ellipse(x * tileWidth , y * tileHeight, tileWidth, tileHeight);
 }
 
- 
+function move(){
+  
+}
+
+function stopAtWall(){
+   
+}
 
 
 
