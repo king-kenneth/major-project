@@ -110,8 +110,4 @@ function move(){
 function stopAtWall(){
    
 }
-
-
-
-  
-
+//https://stackoverflow.com/questions/33744443/html-canvas-game-2d-collision-detection
