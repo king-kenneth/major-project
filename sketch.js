@@ -85,19 +85,19 @@ function movePac() {
   // let y = 10.5;
   
   if (keyIsDown(LEFT_ARROW)) {
-    x -= 1;
+    x -= 0.1;
   }
 
   if (keyIsDown(RIGHT_ARROW)) {
-    x += 1;
+    x += 0.1;
   }
 
   if (keyIsDown(UP_ARROW)) {
-    y -= 1;
+    y -= 0.1;
   }
 
   if (keyIsDown(DOWN_ARROW)) {
-    y += 1;
+    y += 0.1;
   }
 
 
