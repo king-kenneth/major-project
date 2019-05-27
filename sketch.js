@@ -81,10 +81,9 @@ function createEmpty2dArray(cols, rows) {
 }
 
 function movePac() {
-  // let x = 10;
-  // let y = 10.5;
   
   if (keyIsDown(LEFT_ARROW)) {
+<<<<<<< HEAD
     x -= 0.1;
   }
 
@@ -98,15 +97,33 @@ function movePac() {
 
   if (keyIsDown(DOWN_ARROW)) {
     y += 0.1;
+=======
+    // x -= 0.1;
   }
 
+  if (keyIsDown(RIGHT_ARROW)) {
+    // x += 0.1;
+  }
+
+  if (keyIsDown(UP_ARROW)) {
+    // y -= 0.1;
+  }
+
+  if (keyIsDown(DOWN_ARROW)) {
+    // y += 0.1;
+>>>>>>> 3c5bce87fa3cdb4a09d38de0558926e5fbb33cc3
+  }
+
+ 
 
   ellipse(x * tileWidth , y * tileHeight, tileWidth, tileHeight);
 }
 
- 
-
-
-
+function move(){
   
+}
 
+function stopAtWall(){
+   
+}
+//https://stackoverflow.com/questions/33744443/html-canvas-game-2d-collision-detection
