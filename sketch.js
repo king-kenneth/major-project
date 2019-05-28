@@ -106,23 +106,25 @@ function movePac() {
   //   return false;
   // }
     
-  }
+  // }
   ellipse(x * tileWidth , y * tileHeight, tileWidth, tileHeight);
 }
 
-function move(){
-  
+function move(direction){
+  if (direction === left ){
+
+  }
+  if (direction === right){
+
+  }
+  if (direction === up){
+
+  }
+  if (direction === down){
+
+  }
 }
 
-function stopAtWall(){
+function checkForWall(){
    
-}
-//https://stackoverflow.com/questions/33744443/html-canvas-game-2d-collision-detection
-
-
-
-function showyaTITTies;{
-  DOMTokenList display bigFatTiTTies.com
-  if LEFT_ARROW :
-  do
 }
