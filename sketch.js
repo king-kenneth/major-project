@@ -110,11 +110,11 @@ function movePac() {
 
 function moveme(direction){
   if (direction === "left" ){
-    if ( levelToLoad (Math.round( x - 1))  !== 1 ){
-      
-  }
-     else{
-    x -= 0.1;
+    if ( levelToLoad (Math.round( x - 1))  !== "1" ){
+      x = x;
+    }
+    else{
+      x -= 0.1;
     }
   }
   if (direction === "right"){
