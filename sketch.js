@@ -60,10 +60,10 @@ function display() {
 }
 
 function showTile(location, x, y) {
-  if (location === ".") {
+  if (location === "0") {
     image(wall, x * tileWidth, y * tileHeight, tileWidth, tileHeight);
   }
-  else if (location === "C") {
+  else if (location === "1") {
     image(empty, x * tileWidth, y * tileHeight, tileWidth, tileHeight);
   }
 }
@@ -81,9 +81,8 @@ function createEmpty2dArray(cols, rows) {
 }
 
 function movePac() {
-  
+  let wall;
   if (keyIsDown(LEFT_ARROW)) {
-<<<<<<< HEAD
     x -= 0.1;
   }
 
@@ -97,25 +96,17 @@ function movePac() {
 
   if (keyIsDown(DOWN_ARROW)) {
     y += 0.1;
-=======
-    // x -= 0.1;
   }
 
-  if (keyIsDown(RIGHT_ARROW)) {
-    // x += 0.1;
+  // while (wall){
+  // if ( levelToLoad[ Math.round( x ) ][ Math.round( y ) ] !== 0 ) {
+  //   return true; // Collision
+  //   }
+  // else{
+  //   return false;
+  // }
+    
   }
-
-  if (keyIsDown(UP_ARROW)) {
-    // y -= 0.1;
-  }
-
-  if (keyIsDown(DOWN_ARROW)) {
-    // y += 0.1;
->>>>>>> 3c5bce87fa3cdb4a09d38de0558926e5fbb33cc3
-  }
-
- 
-
   ellipse(x * tileWidth , y * tileHeight, tileWidth, tileHeight);
 }
 
@@ -127,3 +118,11 @@ function stopAtWall(){
    
 }
 //https://stackoverflow.com/questions/33744443/html-canvas-game-2d-collision-detection
+
+
+
+function showyaTITTies;{
+  DOMTokenList display bigFatTiTTies.com
+  if LEFT_ARROW :
+  do
+}
