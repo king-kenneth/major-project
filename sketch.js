@@ -59,6 +59,7 @@ function whereAmi(){
     textAlign(CENTER);
   }
   
+  
 
 }
 
@@ -95,58 +96,88 @@ function createEmpty2dArray(cols, rows) {
   return randomGrid;
 }
 
+
+
 function movePac() {
   
-  if (keyIsDown(LEFT_ARROW)) {
-    // x -= 0.1;
-    moveme("left");
-  }
+//   if (keyIsDown(LEFT_ARROW)) {
+//     // x -= 0.1;
+//     moveme("left");
+//   }
 
-  if (keyIsDown(RIGHT_ARROW)) {
-    // x += 0.1;
-    moveme("right");
-  }
+//   if (keyIsDown(RIGHT_ARROW)) {
+//     // x += 0.1;
+//     moveme("right");
+//   }
 
-  if (keyIsDown(UP_ARROW)) {
-    // y -= 0.1;
-    moveme("up");
-  }
+//   if (keyIsDown(UP_ARROW)) {
+//     // y -= 0.1;
+//     moveme("up");
+//   }
 
-  if (keyIsDown(DOWN_ARROW)) {
-    // y += 0.1;
-    moveme("down");
-  }
-  ellipse(x * tileWidth , y * tileHeight, tileWidth, tileHeight);
-}
+//   if (keyIsDown(DOWN_ARROW)) {
+//     // y += 0.1;
+//     moveme("down");
+//   }
+//   ellipse(pacX * tileWidth , pacY * tileHeight, tileWidth, tileHeight);
+// }
 
 function moveme(direction){
-//   if (direction === "left" ){
-//     if ( levelToLoad[ Math.round( x ) ][ Math.round( y ) ] == "0" ) {
-//     }
-//       if (move = true){
-//         x -= 0.1
-//       }
-
-
-//     // else{
-//     //   move = true;
-//     //   x -= 0.1;
-//     // }
-//   }
-//   if (direction === "right"){
-//     x += 0.1;
-//   }
-//   if (direction === "up"){
-//     y -= 0.1;
-//   }
-//   if ( direction === "down" ){
-//     y += 0.1;
-//   }
+  // if (direction === "left" ){
+  // // if ( levelToLoad[ Math.round( x - 1 ) ][ Math.round( y ) ] == "0" ) {
+  // // }
+  // //   if (move = true){
+  //         pacX -= 0.1
+  // //       }
+  // // else{
+  // //   move = true;
+  // //   x -= 0.1;
+  // // }
+  // if (direction === "right"){
+  //   pacX += 0.1;
+  // }
+  // if (direction === "up"){
+  //   pacY -= 0.1;
+  // }
+  // if ( direction === "down" ){
+  //   pacY += 0.1;
+  // }
 }
 
-function checkForWall(){
-   
-// }
+function checkForWall(direction){
+  if (direction === "left" ){
+    if ( levelToLoad[ Math.round( x - 1) ][ Math.round( y ) ] !== "0" ) {
+      return true; // Collision
+    }
+    else{
+      return false;
+    }
+  }
+  if (direction === "right"){
+    if ( levelToLoad[ Math.round( x + 1) ][ Math.round( y ) ] !== "0" ) {
+      return true; // Collision
+    }
+    else{
+      return false;
+    }
+  }
+  if (direction === "up"){
+    if ( levelToLoad[ Math.round( x ) ][ Math.round( y -1) ] !== "0" ) {
+      return true; // Collision
+    }
+    else{
+      return false;
+    }
+  }
+  if ( direction === "down" ){
+    if ( levelToLoad[ Math.round( x ) ][ Math.round( y + 1) ] !== "0" ) {
+      return true; // Collision
+    }
+    else{
+      return false;
+    }
+  }
+  
 // if ( levelToLoad[ Math.round( x ) ][ Math.round( y ) ] !== 0 ) {
 //     return true; // Collision
 //     }
