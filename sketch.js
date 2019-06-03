@@ -9,6 +9,8 @@ let lines;
 let x = 10;
 let y = 10.5;
 
+let gameState = "menu";
+
 function preload() {
   //load level data
   levelToLoad = "assets/levels/0.txt";
@@ -44,10 +46,23 @@ function setup() {
 }
 
 function draw() {
-  display();
-  movePac();
+  whereAmi();
+  
+  // display();
+  // movePac();
   
 }
+
+function whereAmi(){
+  if (gameState === "menu")  {
+    text("TEST", 50, 50);
+    textAlign(CENTER);
+  }
+  
+
+}
+
+
 
 function display() {
   image(levelBackground, 0, 0, width, height);
@@ -101,44 +116,40 @@ function movePac() {
     // y += 0.1;
     moveme("down");
   }
-
-
-  
-
   ellipse(x * tileWidth , y * tileHeight, tileWidth, tileHeight);
 }
 
 function moveme(direction){
-  if (direction === "left" ){
-    if ( levelToLoad[ Math.round( x ) ][ Math.round( y ) ] == "0" ) {
-    }
-      if (move = true){
-        x -= 0.1
-      }
+//   if (direction === "left" ){
+//     if ( levelToLoad[ Math.round( x ) ][ Math.round( y ) ] == "0" ) {
+//     }
+//       if (move = true){
+//         x -= 0.1
+//       }
 
 
-    // else{
-    //   move = true;
-    //   x -= 0.1;
-    // }
-  }
-  if (direction === "right"){
-    x += 0.1;
-  }
-  if (direction === "up"){
-    y -= 0.1;
-  }
-  if ( direction === "down" ){
-    y += 0.1;
-  }
+//     // else{
+//     //   move = true;
+//     //   x -= 0.1;
+//     // }
+//   }
+//   if (direction === "right"){
+//     x += 0.1;
+//   }
+//   if (direction === "up"){
+//     y -= 0.1;
+//   }
+//   if ( direction === "down" ){
+//     y += 0.1;
+//   }
 }
 
 function checkForWall(){
    
-}
+// }
 // if ( levelToLoad[ Math.round( x ) ][ Math.round( y ) ] !== 0 ) {
 //     return true; // Collision
 //     }
 //   else{
 //     return false;
-//   }
+}
