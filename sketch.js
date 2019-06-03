@@ -110,17 +110,7 @@ function movePac() {
 
 function moveme(direction){
   if (direction === "left" ){
-    if ( levelToLoad[ Math.round( x ) ][ Math.round( y ) ] == "0" ) {
-    }
-      if (move = true){
-        x -= 0.1
-      }
-
-
-    // else{
-    //   move = true;
-    //   x -= 0.1;
-    // }
+    x -= 0.1;
   }
   if (direction === "right"){
     x += 0.1;
@@ -133,8 +123,39 @@ function moveme(direction){
   }
 }
 
-function checkForWall(){
-   
+function checkForWall(direction){
+  if (direction === "left" ){
+    if ( levelToLoad[ Math.round( x - 1) ][ Math.round( y ) ] !== "0" ) {
+      return true; // Collision
+      }
+    else{
+      return false;
+    }
+  }
+  if (direction === "right"){
+    if ( levelToLoad[ Math.round( x + 1) ][ Math.round( y ) ] !== "0" ) {
+      return true; // Collision
+      }
+    else{
+      return false;
+    }
+  }
+  if (direction === "up"){
+    if ( levelToLoad[ Math.round( x ) ][ Math.round( y -1) ] !== "0" ) {
+      return true; // Collision
+      }
+    else{
+      return false;
+    }
+  }
+  if ( direction === "down" ){
+    if ( levelToLoad[ Math.round( x ) ][ Math.round( y + 1) ] !== "0" ) {
+      return true; // Collision
+      }
+    else{
+      return false;
+    }
+  }
 }
 // if ( levelToLoad[ Math.round( x ) ][ Math.round( y ) ] !== 0 ) {
 //     return true; // Collision
