@@ -9,7 +9,7 @@ let lines;
 let x = 10;
 let y = 10.5;
 
-let gameState = "menu";
+let menu = "start";
 
 function preload() {
   //load level data
@@ -46,7 +46,9 @@ function setup() {
 }
 
 function draw() {
+  displayMenuOrGame()
   whereAmi();
+  
   
   // display();
   // movePac();
@@ -54,14 +56,25 @@ function draw() {
 }
 
 function whereAmi(){
-  if (gameState === "menu")  {
-    text("TEST", 50, 50);
-    textAlign(CENTER);
-  }
-  
-  
-
+ if (mouseIsPressed && menu === "start"){
+   menu = "game";
+ }
 }
+
+function displayMenuOrGame(){
+  if (menu === "start"){
+    textAlign(CENTER);
+    textSize(32);
+    text("pacman", windowWidth/2, 200, 1000, 200);
+    text("press 1 - 4 to select towers, 5 erases the current slot, tower 1 produces scrap, tower 2 shoots enemies, tower 3 pushes enemies, tower 4 damages enemies that stand on it, last untill the waves stop", windowWidth/2, 800, 1500, 200);
+  }
+}
+
+
+
+
+
+
 
 
 
@@ -98,8 +111,7 @@ function createEmpty2dArray(cols, rows) {
 
 
 
-function movePac() {
-  
+function movePac() { 
 //   if (keyIsDown(LEFT_ARROW)) {
 //     // x -= 0.1;
 //     moveme("left");
@@ -123,30 +135,30 @@ function movePac() {
 // }
 
 function moveme(direction){
-  // if (direction === "left" ){
-  // // if ( levelToLoad[ Math.round( x - 1 ) ][ Math.round( y ) ] == "0" ) {
-  // // }
-  // //   if (move = true){
-  //         pacX -= 0.1
-  // //       }
-  // // else{
-  // //   move = true;
-  // //   x -= 0.1;
-  // // }
-  // if (direction === "right"){
-  //   pacX += 0.1;
+  if (direction === "left" ){
+  // if ( levelToLoad[ Math.round( x - 1 ) ][ Math.round( y ) ] == "0" ) {
   // }
-  // if (direction === "up"){
-  //   pacY -= 0.1;
+  //   if (move = true){
+          pacX -= 0.1
+  //       }
+  // else{
+  //   move = true;
+  //   x -= 0.1;
   // }
-  // if ( direction === "down" ){
-  //   pacY += 0.1;
-  // }
+  if (direction === "right"){
+    pacX += 0.1;
+  }
+  if (direction === "up"){
+    pacY -= 0.1;
+  }
+  if ( direction === "down" ){
+    pacY += 0.1;
+  }
 }
 
 function checkForWall(direction){
   if (direction === "left" ){
-    if ( levelToLoad[ Math.round( x - 1) ][ Math.round( y ) ] !== "0" ) {
+    if ( tiles[ Math.round( x - 1) ][ Math.round( y ) ] !== "0" ) {
       return true; // Collision
     }
     else{
@@ -154,7 +166,7 @@ function checkForWall(direction){
     }
   }
   if (direction === "right"){
-    if ( levelToLoad[ Math.round( x + 1) ][ Math.round( y ) ] !== "0" ) {
+    if ( tiles[ Math.round( x + 1) ][ Math.round( y ) ] !== "0" ) {
       return true; // Collision
     }
     else{
@@ -162,7 +174,7 @@ function checkForWall(direction){
     }
   }
   if (direction === "up"){
-    if ( levelToLoad[ Math.round( x ) ][ Math.round( y -1) ] !== "0" ) {
+    if ( tiles[ Math.round( x ) ][ Math.round( y -1) ] !== "0" ) {
       return true; // Collision
     }
     else{
@@ -170,17 +182,17 @@ function checkForWall(direction){
     }
   }
   if ( direction === "down" ){
-    if ( levelToLoad[ Math.round( x ) ][ Math.round( y + 1) ] !== "0" ) {
+    if ( tiles[ Math.round( x ) ][ Math.round( y + 1) ] !== "0" ) {
       return true; // Collision
     }
     else{
       return false;
     }
-  }
+}
   
 // if ( levelToLoad[ Math.round( x ) ][ Math.round( y ) ] !== 0 ) {
 //     return true; // Collision
 //     }
 //   else{
 //     return false;
-}
+//}
