@@ -8,7 +8,6 @@ let levelToLoad;
 let lines;
 let x = 10;
 let y = 10.5;
-
 let menu = "start";
 
 function preload() {
@@ -26,7 +25,7 @@ function preload() {
 
 function setup() {
   // keep this a 4:3 ratio, or it will stretch in weird ways
-  createCanvas(1000, 750);
+  createCanvas(750, 750);
 
   tilesHigh = lines.length;
   tilesWide = lines[0].length;
@@ -46,37 +45,26 @@ function setup() {
 }
 
 function draw() {
-  displayMenuOrGame()
-  whereAmi();
+  //whereAmi();
   
   
-  // display();
-  // movePac();
+  display();
+  movePac();
   
 }
 
 function whereAmi(){
- if (mouseIsPressed && menu === "start"){
-   menu = "game";
- }
-}
-
-function displayMenuOrGame(){
   if (menu === "start"){
     textAlign(CENTER);
-    textSize(32);
-    text("pacman", windowWidth/2, 200, 1000, 200);
-    text("press 1 - 4 to select towers, 5 erases the current slot, tower 1 produces scrap, tower 2 shoots enemies, tower 3 pushes enemies, tower 4 damages enemies that stand on it, last untill the waves stop", windowWidth/2, 800, 1500, 200);
+    textSize(10);
+    fill(0);
+    text("pacman", windowWidth/2, windowHeight/2);
+    
+  }
+  if (mouseIsPressed && menu === "start"){
+    menu = "game";
   }
 }
-
-
-
-
-
-
-
-
 
 function display() {
   image(levelBackground, 0, 0, width, height);
@@ -112,87 +100,63 @@ function createEmpty2dArray(cols, rows) {
 
 
 function movePac() { 
-//   if (keyIsDown(LEFT_ARROW)) {
-//     // x -= 0.1;
-//     moveme("left");
-//   }
-
-//   if (keyIsDown(RIGHT_ARROW)) {
-//     // x += 0.1;
-//     moveme("right");
-//   }
-
-//   if (keyIsDown(UP_ARROW)) {
-//     // y -= 0.1;
-//     moveme("up");
-//   }
-
-//   if (keyIsDown(DOWN_ARROW)) {
-//     // y += 0.1;
-//     moveme("down");
-//   }
-//   ellipse(pacX * tileWidth , pacY * tileHeight, tileWidth, tileHeight);
-// }
-
-function moveme(direction){
-  if (direction === "left" ){
-  // if ( levelToLoad[ Math.round( x - 1 ) ][ Math.round( y ) ] == "0" ) {
-  // }
-  //   if (move = true){
-          pacX -= 0.1
-  //       }
-  // else{
-  //   move = true;
-  //   x -= 0.1;
-  // }
-  if (direction === "right"){
-    pacX += 0.1;
+  if (keyIsDown(LEFT_ARROW)) {
+    //x -= 0.1;
+    checkForWall("left");
   }
-  if (direction === "up"){
-    pacY -= 0.1;
+
+  if (keyIsDown(RIGHT_ARROW)) {
+    // x += 0.1;
+    checkForWall("right");
   }
-  if ( direction === "down" ){
-    pacY += 0.1;
+
+  if (keyIsDown(UP_ARROW)) {
+    // y -= 0.1;
+    checkForWall("up");
   }
+
+  if (keyIsDown(DOWN_ARROW)) {
+    // y += 0.1;
+    checkForWall("down");
+  }
+
+  ellipse(x * tileWidth , y * tileHeight, tileWidth, tileHeight);
 }
+
+
 
 function checkForWall(direction){
   if (direction === "left" ){
     if ( tiles[ Math.round( x - 1) ][ Math.round( y ) ] !== "0" ) {
-      return true; // Collision
+      x = x ;  // Collision
     }
     else{
-      return false;
+      x -= tileWidth/2;
     }
   }
   if (direction === "right"){
     if ( tiles[ Math.round( x + 1) ][ Math.round( y ) ] !== "0" ) {
-      return true; // Collision
+      x = x; // Collision
     }
     else{
-      return false;
+      x += tileWidth/2;
     }
   }
   if (direction === "up"){
     if ( tiles[ Math.round( x ) ][ Math.round( y -1) ] !== "0" ) {
-      return true; // Collision
+      y = y; // Collision
     }
     else{
-      return false;
+      y -= tileHeight/2;
     }
   }
   if ( direction === "down" ){
     if ( tiles[ Math.round( x ) ][ Math.round( y + 1) ] !== "0" ) {
-      return true; // Collision
+      y = y; // Collision
     }
     else{
-      return false;
+      y += tileHeight/2;
     }
 }
-  
-// if ( levelToLoad[ Math.round( x ) ][ Math.round( y ) ] !== 0 ) {
-//     return true; // Collision
-//     }
-//   else{
-//     return false;
-//}
+}
+
