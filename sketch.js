@@ -25,7 +25,7 @@ function preload() {
 
 function setup() {
   // keep this a 4:3 ratio, or it will stretch in weird ways
-  createCanvas(750, 750);
+  createCanvas(1000, 750);
 
   tilesHigh = lines.length;
   tilesWide = lines[0].length;
@@ -127,36 +127,38 @@ function movePac() {
 
 function checkForWall(direction){
   if (direction === "left" ){
-    if ( tiles[ Math.round( x - 1) ][ Math.round( y ) ] !== "0" ) {
-      x = x ;  // Collision
+    if ( tiles[ Math.ceil( x - 1) ][ Math.round( y ) ] !== "0" ) {
+      x = x;  // Collision
     }
     else{
-      x -= tileWidth/2;
+      x -= 0.1;
     }
   }
   if (direction === "right"){
-    if ( tiles[ Math.round( x + 1) ][ Math.round( y ) ] !== "0" ) {
+    if ( tiles[ Math.ceil( x + 1) ][ Math.round( y ) ] !== "0" ) {
       x = x; // Collision
     }
     else{
-      x += tileWidth/2;
+      x += 0.1;
     }
   }
   if (direction === "up"){
-    if ( tiles[ Math.round( x ) ][ Math.round( y -1) ] !== "0" ) {
+    if ( tiles[ Math.round( x ) ][ Math.ceil( y - 1) ] !== "0" ) {
       y = y; // Collision
     }
     else{
-      y -= tileHeight/2;
+      y -= 0.1;
     }
   }
   if ( direction === "down" ){
-    if ( tiles[ Math.round( x ) ][ Math.round( y + 1) ] !== "0" ) {
+    if ( tiles[ Math.round( x ) ][ Math.ceil( y + 1) ] !== "0" ) {
       y = y; // Collision
     }
     else{
-      y += tileHeight/2;
+      y += 0.1;
     }
 }
 }
 
+//hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha
+//i suck at coding + i need to stay on task!!!!!!!
