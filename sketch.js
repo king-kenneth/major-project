@@ -10,6 +10,7 @@ let x = 10;
 let y = 10.5;
 let menu = "start";
 
+
 function preload() {
   //load level data
   levelToLoad = "assets/levels/0.txt";
@@ -25,8 +26,9 @@ function preload() {
 
 function setup() {
   // keep this a 4:3 ratio, or it will stretch in weird ways
-  createCanvas(1000, 750);
-
+  let h = windowHeight;
+  let w = windowHeight - windowHeight/4;
+  createCanvas(h, w);
   tilesHigh = lines.length;
   tilesWide = lines[0].length;
 
@@ -45,24 +47,28 @@ function setup() {
 }
 
 function draw() {
-  //whereAmi();
-  
-  
-  display();
-  movePac();
-  
+  whereAmi();
 }
+
+
+
 
 function whereAmi(){
   if (menu === "start"){
     textAlign(CENTER);
-    textSize(10);
+    textSize(100);
     fill(0);
-    text("pacman", windowWidth/2, windowHeight/2);
+    text("pacman", windowHeight, windowHeight/2);
     
   }
-  if (mouseIsPressed && menu === "start"){
+  
+  if (mouseIsPressed){
     menu = "game";
+  }
+
+  if (menu === "game"){
+    display();
+    movePac();
   }
 }
 
@@ -128,7 +134,7 @@ function movePac() {
 function checkForWall(direction){
   if (direction === "left" ){
     if ( tiles[ Math.ceil( x - 1) ][ Math.round( y ) ] !== "0" ) {
-      x = x;  // Collision
+      
     }
     else{
       x -= 0.1;
