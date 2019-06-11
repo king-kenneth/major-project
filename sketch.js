@@ -20,8 +20,9 @@ function preload() {
   levelBackground = loadImage("images/WALLPAPER.jpg");
 
   //load tile images
-  wall = loadImage("images/k.png");
-  empty = loadImage("images/k2.png");
+  empty = loadImage("images/k.png");
+  wall = loadImage("images/k2.png");
+  coin = loadImage("images/k3.png")
 }
 
 function setup() {
@@ -58,7 +59,7 @@ function whereAmi(){
     textAlign(CENTER);
     textSize(100);
     fill(0);
-    text("pacman", windowHeight, windowHeight/2);
+    text("pacman", windowHeight/2 , windowHeight/2);
     
   }
   
@@ -83,12 +84,16 @@ function display() {
 }
 
 function showTile(location, x, y) {
-  if (location === "0") {
+  if (location === "2") {
     image(wall, x * tileWidth, y * tileHeight, tileWidth, tileHeight);
   }
   else if (location === "1") {
     image(empty, x * tileWidth, y * tileHeight, tileWidth, tileHeight);
   }
+  else if (location === "0") {
+    image(coin, x * tileWidth, y * tileHeight, tileWidth, tileHeight);
+  }
+  
 }
 
 
@@ -103,7 +108,11 @@ function createEmpty2dArray(cols, rows) {
   return randomGrid;
 }
 
-
+function cheackforcoin(){
+  if ( tiles[ floor(x) ][floor( y ) ] === "0" ) {
+     tiles[ floor(x) ][floor( y )] === "2";
+}
+}
 
 function movePac() { 
   if (keyIsDown(LEFT_ARROW)) {
@@ -125,40 +134,41 @@ function movePac() {
     // y += 0.1;
     checkForWall("down");
   }
-
+  fill(255, 204, 0);
   ellipse(x * tileWidth , y * tileHeight, tileWidth, tileHeight);
 }
 
 
 
 function checkForWall(direction){
+  let nothing = 0;
   if (direction === "left" ){
-    if ( tiles[ Math.ceil( x - 1) ][ Math.round( y ) ] !== "0" ) {
-      
+    if ( tiles[ floor( x - 0.5) ][floor( y ) ] !== "0" ) {
+      x += nothing;
     }
     else{
       x -= 0.1;
     }
   }
   if (direction === "right"){
-    if ( tiles[ Math.ceil( x + 1) ][ Math.round( y ) ] !== "0" ) {
-      x = x; // Collision
+    if ( tiles[floor( x + 0.5) ][ floor( y ) ] !== "0" ) {
+      x += nothing; // Collision
     }
     else{
       x += 0.1;
     }
   }
   if (direction === "up"){
-    if ( tiles[ Math.round( x ) ][ Math.ceil( y - 1) ] !== "0" ) {
-      y = y; // Collision
+    if ( tiles[ floor( x  ) ][ floor( y - 0.5) ] !== "0" ) {
+      y += nothing; // Collision
     }
     else{
       y -= 0.1;
     }
   }
   if ( direction === "down" ){
-    if ( tiles[ Math.round( x ) ][ Math.ceil( y + 1) ] !== "0" ) {
-      y = y; // Collision
+    if ( tiles[floor( x  ) ][floor( y + 0.5) ] !== "0" ) {
+      y += nothing; // Collision
     }
     else{
       y += 0.1;
@@ -167,4 +177,4 @@ function checkForWall(direction){
 }
 
 //hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha
-//i suck at coding + i need to stay on task!!!!!!!
+//i suck at coding + i need to stay on task
