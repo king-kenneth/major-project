@@ -109,7 +109,11 @@ function createEmpty2dArray(cols, rows) {
   return randomGrid;
 }
 
-
+function cheackforcoin(){
+  if ( tiles[ floor(x) ][floor( y ) ] === "0" ) {
+     tiles[ floor(x) ][floor( y )] === "2";
+}
+}
 
 function movePac() { 
   
@@ -132,7 +136,6 @@ function movePac() {
     // y += 0.1;
     checkForWall("down");
   }
-  
   fill(255, 204, 0);
   ellipse(x * tileWidth , y * tileHeight, tileWidth, tileHeight);
   
