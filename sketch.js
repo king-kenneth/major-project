@@ -1,7 +1,7 @@
 
 let tiles;
 let levelBackground;
-let wall , empty;
+let empty , realwall, coin;
 let tilesHigh, tilesWide;
 let tileWidth, tileHeight;
 let levelToLoad;
@@ -20,8 +20,9 @@ function preload() {
   levelBackground = loadImage("images/WALLPAPER.jpg");
 
   //load tile images
-  wall = loadImage("images/k.png");
+  realwall = loadImage("images/k.png");
   empty = loadImage("images/k2.png");
+  coin = loadImage("images/k3.png");
 }
 
 function setup() {
@@ -58,7 +59,7 @@ function whereAmi(){
     textAlign(CENTER);
     textSize(100);
     fill(0);
-    text("pacman", windowHeight, windowHeight/2);
+    text("pacman", windowHeight/2 , windowHeight/2);
     
   }
   
@@ -69,6 +70,7 @@ function whereAmi(){
   if (menu === "game"){
     display();
     movePac();
+    
   }
 }
 
@@ -83,12 +85,16 @@ function display() {
 }
 
 function showTile(location, x, y) {
-  if (location === "0") {
-    image(wall, x * tileWidth, y * tileHeight, tileWidth, tileHeight);
-  }
-  else if (location === "1") {
+  if (location === "2") {
     image(empty, x * tileWidth, y * tileHeight, tileWidth, tileHeight);
   }
+  else if (location === "1") {
+    image(realwall, x * tileWidth, y * tileHeight, tileWidth, tileHeight);
+  }
+  else if (location === "0") {
+    image(coin, x * tileWidth, y * tileHeight, tileWidth, tileHeight);
+  }
+  
 }
 
 
@@ -106,6 +112,7 @@ function createEmpty2dArray(cols, rows) {
 
 
 function movePac() { 
+  
   if (keyIsDown(LEFT_ARROW)) {
     //x -= 0.1;
     checkForWall("left");
@@ -125,46 +132,51 @@ function movePac() {
     // y += 0.1;
     checkForWall("down");
   }
-
+  
+  fill(255, 204, 0);
   ellipse(x * tileWidth , y * tileHeight, tileWidth, tileHeight);
+  
 }
 
 
 
 function checkForWall(direction){
+  let nothing = 0;
   if (direction === "left" ){
-    if ( tiles[ Math.ceil( x - 1) ][ Math.round( y ) ] !== "0" ) {
-      
+    if ( tiles[ floor( x - 0.5) ][floor( y ) ] !== "0" ) {
+      x += nothing; // Collision
     }
     else{
-      x -= 0.1;
+      x -= 0.1; //move
     }
   }
   if (direction === "right"){
-    if ( tiles[ Math.ceil( x + 1) ][ Math.round( y ) ] !== "0" ) {
-      x = x; // Collision
+    if ( tiles[floor( x + 0.5) ][ floor( y ) ] !== "0" ) {
+      x += nothing; // Collision
     }
     else{
-      x += 0.1;
+      x += 0.1;//move
     }
   }
   if (direction === "up"){
-    if ( tiles[ Math.round( x ) ][ Math.ceil( y - 1) ] !== "0" ) {
-      y = y; // Collision
+    if ( tiles[ floor( x  ) ][ floor( y - 0.5) ] !== "0" ) {
+      y += nothing; // Collision
     }
     else{
-      y -= 0.1;
+      y -= 0.1;//move
     }
   }
   if ( direction === "down" ){
-    if ( tiles[ Math.round( x ) ][ Math.ceil( y + 1) ] !== "0" ) {
-      y = y; // Collision
+    if ( tiles[floor( x  ) ][floor( y + 0.5) ] !== "0" ){
+      y += nothing; // Collision
     }
     else{
-      y += 0.1;
+      y += 0.1;//move
     }
-}
+  }
 }
 
+
+
 //hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha
-//i suck at coding + i need to stay on task!!!!!!!
+//i suck at coding + i need to stay on task
